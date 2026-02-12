@@ -1,0 +1,7 @@
+{
+  "name": "Poet Interview: Global Archive",
+  "description": "An immersive educational platform to interview global literary giants, integrating bilingual learning with historical culture.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

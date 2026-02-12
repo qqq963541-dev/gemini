@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poet Interview: Ancient Archive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=Zhi+Mang+Xing&family=Long+Cang&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --parchment-bg: #f4e4bc;
+        --ink-color: #1a1a1a;
+        --poet-red: #8c2a2a;
+      }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: var(--poet-red); border-radius: 10px; }
+
+      .font-chinese { font-family: 'Ma Shan Zheng', cursive; } /* Title font substitute */
+      .font-serif-text { font-family: 'Noto Serif SC', serif; } /* Body font substitute */
+      .font-handwriting { font-family: 'Zhi Mang Xing', cursive; } /* Annotation font */
+      .font-calligraphy { font-family: 'Long Cang', cursive; }
+
+      /* Ancient Paper Texture */
+      .bg-ancient-paper {
+        background-color: #fdfbf7;
+        background-image: url("https://www.transparenttextures.com/patterns/rice-paper-2.png");
+        position: relative;
+      }
+      
+      .bg-ancient-paper::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.03) 100%);
+        pointer-events: none;
+      }
+
+      /* Curled Edge Shadow */
+      .curled-edge {
+        box-shadow: 
+          0 1px 4px rgba(0,0,0,0.1),
+          0 0 40px rgba(0,0,0,0.05) inset;
+        position: relative;
+      }
+      .curled-edge::before {
+        content: "";
+        position: absolute;
+        bottom: 12px;
+        right: 4px;
+        width: 60%;
+        height: 10px;
+        box-shadow: 0 12px 12px rgba(0,0,0,0.15);
+        transform: rotate(2deg);
+        z-index: -1;
+      }
+
+      /* Ink Bleeding Effect for typing */
+      @keyframes inkBleed {
+        0% { opacity: 0; text-shadow: 0 0 10px var(--ink-color); filter: blur(2px); }
+        100% { opacity: 1; text-shadow: 0 0 0px transparent; filter: blur(0); }
+      }
+      .ink-bleed { animation: inkBleed 0.4s ease-out forwards; }
+
+      /* Folding Book Animation */
+      @keyframes foldOpen {
+        from { transform: perspective(1000px) rotateY(-90deg); opacity: 0; }
+        to { transform: perspective(1000px) rotateY(0deg); opacity: 1; }
+      }
+      .animate-fold { animation: foldOpen 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+      /* Seal Stamp Effect */
+      .seal-stamp {
+        border: 2px solid #b91c1c;
+        color: #b91c1c;
+        padding: 2px 4px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transform: rotate(-15deg);
+        display: inline-block;
+        opacity: 0.8;
+      }
+
+      /* Red Vertical Lines (ancient book columns) */
+      .vertical-lines {
+        background-image: linear-gradient(to right, #fca5a5 1px, transparent 1px);
+        background-size: 2rem 100%;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "jspdf": "https://esm.sh/jspdf@^4.1.0",
+    "html2canvas": "https://esm.sh/html2canvas@^1.4.1",
+    "docx": "https://esm.sh/docx@^9.5.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-[#e6dcc3] h-screen overflow-hidden">
+    <div id="root" class="h-full"></div>
+  </body>
+</html>
